@@ -18,6 +18,56 @@ const FloatingChatbot = () => {
 
   const toggleChat = () => setIsOpen(!isOpen);
 
+  // Prebuilt quick questions and canned answers to improve UX and enable offline demos
+  const prebuiltQA: { question: string; answer: string }[] = [
+    {
+      question: 'How often should I check my blood sugar?',
+      answer:
+        'If you have diabetes, check fasting blood sugar in the morning and before meals. Your care team may recommend additional checks after meals or at bedtime. Aim to follow your personalized plan.'
+    },
+    {
+      question: 'What does a normal resting heart rate look like?',
+      answer:
+        'A typical resting heart rate for adults ranges from 60 to 100 bpm. Athletes may have lower resting rates. If you consistently see values outside this range, consult a clinician.'
+    },
+    {
+      question: 'How many hours of sleep do I need?',
+      answer:
+        'Most adults need 7–9 hours of sleep per night. Consistent sleep schedule, reduced screen time before bed, and a relaxing routine can improve sleep quality.'
+    },
+    {
+      question: 'How much water should I drink daily?',
+      answer:
+        'A common guideline is about 2–3 liters (8–12 cups) per day depending on activity, climate, and body size. Listen to thirst and consult your provider for personalized guidance.'
+    },
+    {
+      question: 'What are common side effects of this prescription?',
+      answer:
+        'Common side effects vary by medication. Look for nausea, dizziness, headache, or GI upset. If you experience severe allergic reactions or unexpected symptoms, seek immediate care.'
+    },
+    {
+      question: 'How can I lower my blood pressure naturally?',
+      answer:
+        'Lifestyle measures: reduce sodium, increase potassium-rich foods, exercise regularly, maintain healthy weight, limit alcohol, manage stress, and follow your provider’s advice.'
+    },
+    {
+      question: 'What is a healthy weekly exercise goal?',
+      answer:
+        'Aim for 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous activity per week, plus strength training 2 days a week, as recommended by WHO.'
+    },
+    {
+      question: 'How do I store my medication safely?',
+      answer:
+        'Store in original packaging in a cool, dry place unless refrigerated. Keep out of reach of children and follow any special storage instructions from the pharmacist.'
+    },
+  ];
+
+  // Build a quick lookup to serve canned answers instantly
+  const prebuiltLookup = prebuiltQA.reduce<Record<string, string>>((acc, item) => {
+    acc[item.question] = item.answer;
+    return acc;
+  }, {});
+
   const speakText = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
@@ -116,6 +166,21 @@ const FloatingChatbot = () => {
     }
   };
 
+  // When a quick question is chosen, insert the question and respond with a canned answer when available
+  const handleQuickQuestion = (q: string) => {
+    const userMsg = { sender: 'user', text: q };
+    if (prebuiltLookup[q]) {
+      const botMsg = { sender: 'bot', text: prebuiltLookup[q] };
+      setMessages((prev) => [...prev, userMsg, botMsg]);
+      speakText(prebuiltLookup[q]);
+      setTimeout(scrollToBottom, 100);
+      return;
+    }
+
+    // Fallback: populate input and let user send to AI
+    setInputText(q);
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -155,7 +220,18 @@ const FloatingChatbot = () => {
               {messages.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 dark:text-gray-400 p-4">
                   <MessageSquare className="w-8 h-8 mb-2" />
-                  <p>Ask me anything about your health or medications</p>
+                  <p className="mb-3">Ask me anything about your health or medications</p>
+                  <div className="flex flex-col gap-2 w-full">
+                    {prebuiltQA.slice(0, 6).map((p) => (
+                      <button
+                        key={p.question}
+                        onClick={() => handleQuickQuestion(p.question)}
+                        className="text-sm text-left px-3 py-2 rounded-md bg-white/60 dark:bg-gray-800/60 hover:bg-white/80 dark:hover:bg-gray-700/70 border border-gray-200/30 dark:border-gray-700/30"
+                      >
+                        {p.question}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 messages.map((message, index) => (
@@ -196,6 +272,24 @@ const FloatingChatbot = () => {
             </div>
             
             <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              {/* Suggested questions while chatting */}
+              {messages.length > 0 && (
+                <div className="px-3 pb-2">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">Try a quick question:</div>
+                  <div className="flex gap-2 overflow-x-auto">
+                    {prebuiltQA.map((p) => (
+                      <button
+                        key={p.question}
+                        onClick={() => handleQuickQuestion(p.question)}
+                        type="button"
+                        className="whitespace-nowrap text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:opacity-90"
+                      >
+                        {p.question}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="flex gap-2">
                 <input
                   type="text"
