@@ -11,11 +11,26 @@ export default {
         },
         background: {
           light: '#ffffff',
-          dark: '#1a1a1a',
+          dark: '#0f172a', // Slate-900 for better contrast
+        },
+        card: {
+          light: '#ffffff',
+          dark: '#1e293b', // Slate-800
+        },
+        surface: {
+          dark: '#0f172a', // Slate-900
+          darkAlt: '#1e293b', // Slate-800
         }
       },
       fontFamily: {
         sans: ['Inter var', 'sans-serif'],
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        'dark-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+        'dark-md': '0 10px 15px -3px rgba(0, 0, 0, 0.4)',
       },
     },
   },

@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection, user
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="w-20 md:w-64 h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-r border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+        className="w-20 md:w-64 h-full bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border-r border-gray-200/40 dark:border-slate-700/40 shadow-xl dark:shadow-slate-950/50"
       >
         <div className="p-4 h-full flex flex-col">
           <div className="flex items-center space-x-4 mb-8">
@@ -52,10 +52,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection, user
               </div>
             )}
             <div className="hidden md:block">
-              <h3 className="font-semibold text-gray-800 dark:text-white">
+              <h3 className="font-semibold text-gray-800 dark:text-slate-100">
                 {userProfile?.name || 'User'}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-slate-400">
                 {userProfile?.email || ''}
               </p>
             </div>
@@ -68,8 +68,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection, user
                 onClick={() => setActiveSection(item.id)}
                 className={`w-full flex items-center space-x-4 p-3 rounded-lg transition-all duration-200 ${
                   activeSection === item.id
-                    ? 'bg-gradient-to-r from-blue-500 to-green-500 text-white shadow-lg'
-                    : 'hover:bg-gray-100/50 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-300'
+                    ? 'bg-gradient-to-r from-blue-500 to-green-500 text-white shadow-lg dark:shadow-blue-900/50'
+                    : 'hover:bg-gray-100/50 dark:hover:bg-slate-700/50 text-gray-700 dark:text-slate-300'
                 }`}
               >
                 <item.icon className="w-5 h-5" />

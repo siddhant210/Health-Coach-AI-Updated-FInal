@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="relative w-full bg-white dark:bg-gray-900 shadow-md">
+    <nav className="relative w-full bg-white/80 dark:bg-slate-800/50 backdrop-blur-xl shadow-lg dark:shadow-slate-950/50 border-b border-gray-200/40 dark:border-slate-700/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link 
@@ -84,15 +84,15 @@ const Navbar: React.FC = () => {
             <div className="relative">
               <button
                 onClick={handleTranslateToggle}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200"
                 aria-label="Translate"
               >
-                <Languages className="w-5 h-5 text-blue-500" />
+                <Languages className="w-5 h-5 text-blue-500 dark:text-blue-400" />
               </button>
               
               {translateOpen && (
                 <div 
-                  className="absolute right-0 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 p-2"
+                  className="absolute right-0 mt-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl shadow-lg dark:shadow-slate-950/50 rounded-lg z-50 p-2 border border-gray-200/40 dark:border-slate-700/40"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div id="google_translate_element"></div>
@@ -103,13 +103,13 @@ const Navbar: React.FC = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
+                <Sun className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
               ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
+                <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               )}
             </button>
 
@@ -118,22 +118,22 @@ const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={handleDropdownToggle}
-                  className="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200"
                   aria-label="User menu"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-from to-primary-to flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-from to-primary-to flex items-center justify-center shadow-md dark:shadow-lg dark:shadow-blue-900/50">
                     <User className="w-4 h-4 text-white" />
                   </div>
                 </button>
 
                 {dropdownOpen && (
                   <div 
-                    className="absolute right-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-50 mt-2 w-48"
+                    className="absolute right-0 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl shadow-lg dark:shadow-slate-950/50 rounded-lg z-50 mt-2 w-48 border border-gray-200/40 dark:border-slate-700/40"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Link
                       to="/profile"
-                      className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200 rounded-t-lg"
                       onClick={() => setDropdownOpen(false)}
                     >
                       <User className="w-4 h-4 mr-2" />
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                     </Link>
                     <Link
                       to="/profile-setup"
-                      className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200"
                       onClick={() => setDropdownOpen(false)}
                     >
                       <Settings className="w-4 h-4 mr-2" />
@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="flex items-center w-full text-left px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center w-full text-left px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700/60 transition-all duration-200 rounded-b-lg"
                     >
                       <LogOut className="w-4 h-4 mr-2" />
                       Log Out
@@ -161,13 +161,13 @@ const Navbar: React.FC = () => {
               <>
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-from dark:hover:text-primary-to transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 hover:text-primary-from dark:hover:text-primary-to transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-from to-primary-to rounded-lg hover:opacity-90 transition-opacity"
+                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-from to-primary-to rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-200"
                 >
                   Sign Up
                 </Link>

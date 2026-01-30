@@ -127,7 +127,7 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="flex h-screen bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="m-auto">
           <Loader2 className="h-8 w-8 animate-spin text-blue-600 dark:text-blue-400" />
         </div>
@@ -136,7 +136,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Sidebar Component */}
       <Sidebar 
         activeSection={activeSection} 
@@ -147,13 +147,13 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 border-b border-gray-200/30 dark:border-gray-700/30">
+        <div className="sticky top-0 z-10 bg-white/60 dark:bg-slate-800/50 backdrop-blur-xl p-6 border-b border-gray-200/20 dark:border-slate-700/20 shadow-sm">
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 Welcome, {userProfile?.name || 'User'}
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 flex items-center">
+              <p className="text-gray-600 dark:text-slate-300 flex items-center">
                 <Calendar className="w-4 h-4 mr-2 text-blue-500 dark:text-blue-400" />
                 {format(new Date(), 'MMMM d, yyyy')}
               </p>
@@ -168,8 +168,9 @@ export default function Dashboard() {
             <div className="lg:col-span-2 space-y-6">
               {/* Health Monitoring Quick Actions */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-blue-900/20"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-semibold flex items-center">
@@ -180,14 +181,14 @@ export default function Dashboard() {
                 <div className="grid grid-cols-2 gap-4">
                   <Link 
                     to="/blood-oxygen" 
-                    className="flex flex-col items-center justify-center h-24 rounded-lg border border-blue-500 text-blue-500 bg-white hover:bg-blue-50 dark:bg-gray-700 dark:hover:bg-gray-600 transition p-4"
+                    className="flex flex-col items-center justify-center h-24 rounded-xl border border-blue-400/50 text-blue-600 dark:text-blue-300 bg-gradient-to-br from-white to-blue-50/50 hover:from-blue-50 hover:to-blue-100/50 dark:from-slate-700/40 dark:to-slate-700/20 dark:hover:from-slate-700/60 dark:hover:to-slate-600/40 transition-all duration-300 p-4 shadow-md dark:shadow-lg dark:shadow-slate-950/30"
                   >
                     <Heart className="w-6 h-6 mb-2" />
                     <p className="text-lg font-medium text-center">Take Blood Oxygen Reading</p>
                   </Link>
                   <Link 
                     to="/heart-rate-monitor" 
-                    className="flex flex-col items-center justify-center h-24 rounded-lg border border-blue-500 text-blue-500 bg-white hover:bg-blue-50 dark:bg-gray-700 dark:hover:bg-gray-600 transition p-4"
+                    className="flex flex-col items-center justify-center h-24 rounded-xl border border-blue-400/50 text-blue-600 dark:text-blue-300 bg-gradient-to-br from-white to-blue-50/50 hover:from-blue-50 hover:to-blue-100/50 dark:from-slate-700/40 dark:to-slate-700/20 dark:hover:from-slate-700/60 dark:hover:to-slate-600/40 transition-all duration-300 p-4 shadow-md dark:shadow-lg dark:shadow-slate-950/30"
                   >
                     <Activity className="w-6 h-6 mb-2" />
                     <p className="text-lg font-medium text-center">Take Heart Rate Reading</p>
@@ -197,8 +198,9 @@ export default function Dashboard() {
 
               {/* Health Summary Card */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-blue-900/20"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-semibold flex items-center">
@@ -214,21 +216,21 @@ export default function Dashboard() {
                     <div className="w-20 h-20 mb-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center shadow-md">
                       <Flame className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
                       Calories
                     </p>
                     <p className="text-lg font-bold">{healthSummary.calories}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">kcal</p>
+                    <p className="text-xs text-gray-500 dark:text-slate-400">kcal</p>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-20 h-20 mb-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center shadow-md">
                       <Move className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
                       Exercise
                     </p>
                     <p className="text-lg font-bold">{healthSummary.exercise}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-gray-500 dark:text-slate-400">
                       minutes
                     </p>
                   </div>
@@ -236,11 +238,11 @@ export default function Dashboard() {
                     <div className="w-20 h-20 mb-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center shadow-md">
                       <Watch className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
                       Stand Hours
                     </p>
                     <p className="text-lg font-bold">{healthSummary.standHours}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-gray-500 dark:text-slate-400">
                       hours
                     </p>
                   </div>
@@ -249,8 +251,9 @@ export default function Dashboard() {
 
               {/* Activity Card */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-teal-900/20"
               >
                 <h2 className="text-xl font-semibold mb-6 flex items-center">
                   <Dumbbell className="w-5 h-5 mr-2 text-teal-500" />
@@ -259,14 +262,14 @@ export default function Dashboard() {
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={healthData.activity}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#eee" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                       <XAxis 
                         dataKey="day" 
-                        tick={{ fill: '#6b7280' }}
+                        tick={{ fill: '#64748b' }}
                         axisLine={false}
                       />
                       <YAxis 
-                        tick={{ fill: '#6b7280' }}
+                        tick={{ fill: '#64748b' }}
                         axisLine={false}
                       />
                       <Tooltip 
@@ -293,8 +296,9 @@ export default function Dashboard() {
             <div className="space-y-6">
               {/* Medication Card */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-blue-900/20"
               >
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-semibold flex items-center">
@@ -310,14 +314,14 @@ export default function Dashboard() {
                   {medications.map((med, index) => (
                     <motion.div
                       key={index}
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50/50 to-green-50/50 dark:from-gray-700/50 dark:to-gray-700/30 rounded-xl transition-all duration-200"
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50/60 to-cyan-50/40 dark:from-slate-700/40 dark:to-slate-700/20 rounded-xl transition-all duration-200 border border-blue-100/40 dark:border-slate-600/30 shadow-sm hover:shadow-md dark:hover:shadow-slate-950/30"
                     >
                       <div className="flex items-center">
                         <Pill className={`w-5 h-5 mr-3 ${med.taken ? 'text-green-500' : 'text-blue-500'}`} />
                         <div>
                           <p className="font-medium">{med.name}</p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+                          <p className="text-sm text-gray-500 dark:text-slate-400 flex items-center">
                             <Clock className="w-3 h-3 mr-1" />
                             {med.time}
                           </p>
@@ -346,8 +350,9 @@ export default function Dashboard() {
 
               {/* Alerts Card */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-amber-900/20"
               >
                 <h2 className="text-xl font-semibold mb-6 flex items-center">
                   <AlertCircle className="w-5 h-5 mr-2 text-blue-500" />
@@ -357,13 +362,13 @@ export default function Dashboard() {
                   {alerts.map((alert, index) => (
                     <motion.div
                       key={index}
-                      whileHover={{ x: 2 }}
-                      className={`flex items-start p-4 rounded-xl border-l-4 ${
+                      whileHover={{ x: 4 }}
+                      className={`flex items-start p-4 rounded-xl border-l-4 backdrop-blur-sm transition-all duration-200 shadow-sm hover:shadow-md dark:hover:shadow-slate-950/30 ${
                         alert.type === 'warning'
-                          ? 'border-yellow-500 bg-yellow-50/50 dark:bg-yellow-900/20'
+                          ? 'border-yellow-500 bg-yellow-50/60 dark:bg-yellow-900/20'
                           : alert.type === 'success'
-                          ? 'border-green-500 bg-green-50/50 dark:bg-green-900/20'
-                          : 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20'
+                          ? 'border-green-500 bg-green-50/60 dark:bg-green-900/20'
+                          : 'border-blue-500 bg-blue-50/60 dark:bg-blue-900/20'
                       }`}
                     >
                       <AlertCircle
@@ -377,7 +382,7 @@ export default function Dashboard() {
                       />
                       <div>
                         <p className="font-medium">{alert.message}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{alert.time}</p>
+                        <p className="text-sm text-gray-500 dark:text-slate-400">{alert.time}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -386,8 +391,9 @@ export default function Dashboard() {
 
               {/* Tasks Card */}
               <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30"
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-teal-900/20"
               >
                 <h2 className="text-xl font-semibold mb-6 flex items-center">
                   <CheckCircle className="w-5 h-5 mr-2 text-teal-500" />
@@ -397,8 +403,8 @@ export default function Dashboard() {
                   {tasks.map((task, index) => (
                     <motion.div
                       key={index}
-                      whileHover={{ x: 2 }}
-                      className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50/50 to-green-50/50 dark:from-gray-700/50 dark:to-gray-700/30 rounded-lg transition-colors"
+                      whileHover={{ x: 4 }}
+                      className="flex items-center justify-between p-3 bg-gradient-to-r from-teal-50/60 to-cyan-50/40 dark:from-slate-700/40 dark:to-slate-700/20 rounded-lg transition-all duration-200 border border-teal-100/40 dark:border-slate-600/30 shadow-sm hover:shadow-md dark:hover:shadow-slate-950/30"
                     >
                       <div className="flex items-center">
                         <input
@@ -413,7 +419,7 @@ export default function Dashboard() {
                         />
                         <span
                           className={`ml-3 ${
-                            task.completed ? 'line-through text-gray-500 dark:text-gray-400' : ''
+                            task.completed ? 'line-through text-gray-500 dark:text-slate-400' : ''
                           }`}
                         >
                           {task.task}
