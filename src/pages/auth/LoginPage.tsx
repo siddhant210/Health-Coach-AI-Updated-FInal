@@ -58,7 +58,7 @@ export default function LoginPage() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="pt-20 pb-32 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <section className="pt-10 sm:pt-20 pb-16 sm:pb-32 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <motion.div
@@ -66,10 +66,10 @@ export default function LoginPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary-from to-primary-to bg-clip-text text-transparent mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary-from to-primary-to bg-clip-text text-transparent mb-4 sm:mb-6">
                 Login
               </h1>
-              <p className="text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto mb-8">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
                 Welcome back! Please log in to your account.
               </p>
             </motion.div>
@@ -78,31 +78,31 @@ export default function LoginPage() {
       </section>
 
       {/* Login Form */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="p-8 bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50"
+            className="p-6 sm:p-8 bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-slate-950/50 border border-gray-200/40 dark:border-slate-700/50"
           >
             {/* Demo credentials hint */}
-            <div className="mb-6 p-4 bg-blue-50/70 dark:bg-blue-900/20 rounded-lg border border-blue-200/50 dark:border-blue-800/30 backdrop-blur-sm">
-              <p className="text-sm text-blue-800 dark:text-blue-200">
+            <div className="mb-6 p-3 sm:p-4 bg-blue-50/70 dark:bg-blue-900/20 rounded-lg border border-blue-200/50 dark:border-blue-800/30 backdrop-blur-sm">
+              <p className="text-xs sm:text-sm text-blue-800 dark:text-blue-200">
                 <strong>Demo Credentials:</strong><br/>
-                Email: <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">sidworks21@gmail.com</code><br/>
-                Password: <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">123456</code><br/>
+                Email: <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded text-xs">sidworks21@gmail.com</code><br/>
+                Password: <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded text-xs">123456</code><br/>
                 (Or use any email/password — no validation)
               </p>
             </div>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label className="block text-gray-700 dark:text-slate-300 mb-2" htmlFor="email">
+                <label className="block text-gray-700 dark:text-slate-300 mb-2 text-sm sm:text-base" htmlFor="email">
                   Email Address
                 </label>
                 <div className="flex border border-gray-300 dark:border-slate-600 rounded-lg overflow-hidden focus-within:border-primary-from focus-within:ring-1 focus-within:ring-primary-from/50 dark:focus-within:ring-blue-400/30 transition-all">
-                  <Mail className="w-6 h-6 p-2 text-gray-500 dark:text-slate-400" />
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 p-2 text-gray-500 dark:text-slate-400" />
                   <input
                     type="email"
                     id="email"
@@ -110,17 +110,17 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="flex-grow p-2 focus:outline-none bg-transparent dark:text-slate-100"
+                    className="flex-grow p-2 sm:p-3 focus:outline-none bg-transparent dark:text-slate-100 text-sm sm:text-base"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label className="block text-gray-700 dark:text-slate-300 mb-2" htmlFor="password">
+                <label className="block text-gray-700 dark:text-slate-300 mb-2 text-sm sm:text-base" htmlFor="password">
                   Password
                 </label>
                 <div className="flex border border-gray-300 dark:border-slate-600 rounded-lg overflow-hidden focus-within:border-primary-from focus-within:ring-1 focus-within:ring-primary-from/50 dark:focus-within:ring-blue-400/30 transition-all">
-                  <Lock className="w-6 h-6 p-2 text-gray-500 dark:text-slate-400" />
+                  <Lock className="w-5 h-5 sm:w-6 sm:h-6 p-2 text-gray-500 dark:text-slate-400" />
                   <input
                     type="password"
                     id="password"
@@ -128,7 +128,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="flex-grow p-2 focus:outline-none bg-transparent dark:text-slate-100"
+                    className="flex-grow p-2 sm:p-3 focus:outline-none bg-transparent dark:text-slate-100 text-sm sm:text-base"
                   />
                 </div>
               </div>
@@ -136,14 +136,14 @@ export default function LoginPage() {
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.05 }}
-                className="w-full px-4 py-3 bg-gradient-to-r from-primary-from to-primary-to text-white rounded-lg font-medium transition-colors hover:opacity-90"
+                className="w-full px-4 py-2 sm:py-3 bg-gradient-to-r from-primary-from to-primary-to text-white rounded-lg font-medium transition-colors hover:opacity-90 text-sm sm:text-base"
               >
                 {isLoading ? "Logging in..." : "Log In"}
               </motion.button>
             </form>
 
             <div className="mt-4 text-center">
-              <p className="text-gray-600 dark:text-slate-300">
+              <p className="text-gray-600 dark:text-slate-300 text-sm sm:text-base">
                 Don't have an account?{" "}
                 <span className="text-primary-from cursor-pointer hover:underline font-medium" onClick={() => navigate("/signup")}>
                   Sign Up
