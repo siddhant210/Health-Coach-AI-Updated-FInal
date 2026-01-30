@@ -12,7 +12,7 @@ import {
   PieChart, Pie, Cell, BarChart, Bar
 } from 'recharts';
 import { Link } from 'react-router-dom';
-import Sidebar from './sidebar';
+import Sidebar from './Sidebar';
 import FloatingChatbot from '../ai/FloatingChatbot';
 
 const healthData = {
