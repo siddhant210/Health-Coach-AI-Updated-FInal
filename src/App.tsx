@@ -20,7 +20,8 @@ import DietRecommendations from "./pages/Other/DietRecommendations";
 import Documents from "./pages/Other/Documents";
 import Medication from './pages/Other/Medication';
 import HeartRateMonitor from './pages/Other/HearRateMonitor';
-import AIBotsPage from './pages/ai/AIBotsPage'; 
+import AIBotsPage from './pages/ai/AIBotsPage';
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/documents" element={<Documents />} />
                 <Route path="/heart-rate-monitor" element={<HeartRateMonitor />} />
                 <Route path="/ai" element={<AIBotsPage />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
           </main>

@@ -12,6 +12,17 @@ dist
 dist-ssr
 *.local
 *.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+*.vercel
+
+# Build output
+out/
+.next/
+build/
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +34,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.cache
+
+# OS
+Thumbs.db
+.env*.local
